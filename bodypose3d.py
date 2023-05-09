@@ -13,7 +13,7 @@ mp_pose = mp.solutions.pose
 
 frame_shape = [720, 1280]
 
-#add here  more keypoints  12 keypoints 
+#add here  more keypoints   
 # pose_keypoints = [16, 14, 12, 11, 13, 15, 24, 23, 25, 26, 27, 28] add all keypoints 
 pose_keypoints = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32]
 def run_mp(input_stream1, P0, P1):
@@ -68,6 +68,9 @@ def run_mp(input_stream1, P0, P1):
         frame1 = cv.cvtColor(frame1, cv.COLOR_RGB2BGR)
 
         #check for keypoints detection
+        
+        
+        
         frame0_keypoints = []
         if results0.pose_landmarks:
             for i, landmark in enumerate(results0.pose_landmarks.landmark):
@@ -122,12 +125,6 @@ def run_mp(input_stream1, P0, P1):
         frame_p3ds = np.array(frame_p3ds).reshape((33, 3))
         kpts_3d.append(frame_p3ds)
 
-        # uncomment these if you want to see the full keypoints detections
-        # mp_drawing.draw_landmarks(frame0, results0.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-        #                           landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
-        
-        # mp_drawing.draw_landmarks(frame1, results1.pose_landmarks, mp_pose.POSE_CONNECTIONS,
-        #                           landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
 
         cv.imshow('cam1', frame1)
         cv.imshow('cam0', frame0)
@@ -145,10 +142,21 @@ def run_mp(input_stream1, P0, P1):
 
 if __name__ == '__main__':
 
+    root = Path().parent.absolute()
+    video_dir = 'video'
+    output_dir = 'output'
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
+        
+    for vid in os.listdir(video_dir):
+        vid_fullpath = os.path.join(root,video_dir,vid)
+        vid_output = os.path.join(root,output_dir, vid[:-4])
+        
+    
     
     #this will load the sample videos if no camera ID is given
-        input_stream1 = 'video/P3_34_rgb.avi'
-    # input_stream2 = 'media/P1_4_rgb.avi'
+        input_stream1 = vid_fullpath
+
 
     #put camera id as command line arguements
         if len(sys.argv) == 3:
@@ -164,7 +172,8 @@ if __name__ == '__main__':
     #this will create keypoints file in current working folder
     # write_keypoints_to_disk('kpts_cam0.dat', kpts_cam0)
     # write_keypoints_to_disk('kpts_cam1.dat', kpts_cam1)
-        write_keypoints_to_disk('output/P3_34_rgb_3d.csv', kpts_3d)
+        write_keypoints_to_disk(vid_output+'.csv',kpts_3d)
+        
 
 
 
