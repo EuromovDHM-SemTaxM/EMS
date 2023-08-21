@@ -1,5 +1,6 @@
 # Emotional Motor Signatures
 Computational Framework for Emotional Motor Signatures 
+
 This work involves experimental, modelling and data mining activities. It aims to better understand how our human emotions take shape and are reflected in our sensory-motor behaviour. 
 
 The identification of the emotional signatures of the movements requires the calculation of a compact vector representation of a given movement from the movement parameters (positions by motion capture for example). This compact representation allows, among other things, the calculation of similarity or divergence measures between movements on axes related to emotional valence. 
@@ -17,3 +18,14 @@ The VAE's training objective involves maximizing the Evidence Lower Bound (ELBO)
 Variational Autoencoders (VAEs) have the potential to generate new body movement data corresponding to specific emotional states. By leveraging the learned latent representation of emotions, VAEs can facilitate the synthesis of new body movement sequences that exhibit desired emotional characteristics.
 
 Sampling from the latent space distribution makes possible to generate body movement sequences that reflect desired emotions. 
+
+## Conclusion 
+
+This experience was extremely interesting and instructive. Not only did I acquire new knowledge and good practices on a technical level, but I also got a clearer idea about the work of research. Before, I was only focused on the learning aspect and my desire to quench my thirst for knowledge, now I realize that this is not enough to have good results. Another factor that comes into play is perseverance and determination. The research work and the investment of a long time to study a potential solution to a problem can give unsatisfactory results, and for a novice like me, the first thing I felt was frustration, before realizing that these results were not a failure, but a track to be improved and modified, or in the worst case a track discarded on the way of this research.
+
+Another way to explore could be to increase the components of the dimension reduction result, maybe that would allow us to better discern the nuances between the different emotions. To favor a good classification at the risk of not being able to represent the dimensions on a graph. Changing the database could improve the results too.
+
+After rigorously experimenting with classical emotion recognition methods across various datasets, it becomes increasingly evident that these traditional approaches have their limitations. Classical methods often rely on rule-based or predefined feature extraction techniques, which struggle to adapt to the diverse and nuanced expressions of emotions found in real-world data. These methods tend to perform inconsistently across different datasets and fail to capture the underlying emotional dynamics effectively. This inconsistency underscores the need for more advanced techniques like Variational Autoencoders (VAEs).
+
+In contrast, VAEs have emerged as a promising solution in the realm of emotion recognition and generation. By learning a latent representation of emotions, VAEs effectively extract an "emotional motor signature" from the data. This signature not only improves the adaptability and generalization of emotion-related tasks but also provides a deeper understanding of the emotional content present in the text or other data types. This conclusion underscores the importance of embracing innovative approaches like VAEs in emotion-related tasks, as they offer the potential to capture the richness and complexity of human emotions more effectively than classical methods.
+
